@@ -1,0 +1,47 @@
+{
+  "name": "webpack-multiple-themes-compile",
+  "version": "1.0.0",
+  "description": "Overwrite webpack config to output multiple themes css.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "rm -rf src/src && rm -rf test/themes && jest",
+    "build": "rm -rf lib && rm -rf src/src && babel src --out-dir lib",
+    "ready": "npm run test && npm run build",
+    "prepublishOnly": "npm run ready",
+    "preversion": "npm run ready"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.hypers.com:fe/webpack-multiple-themes-compile.git"
+  },
+  "author": "Godefery.Yang <hiyangguo@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "extract-text-webpack-plugin": ">1.0.0"
+  },
+  "dependencies": {
+    "css-loader": "^1.0.0",
+    "fs-extra": "^7.0.0",
+    "less": "^3.8.0",
+    "less-loader": "^4.1.0",
+    "lodash": "^4.17.10"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "files": [
+    "README.md",
+    "lib",
+    "src"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "regenerator-runtime": "^0.12.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.4.2",
+    "webpack": "^4.16.5"
+  }
+}

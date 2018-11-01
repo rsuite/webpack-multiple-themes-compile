@@ -21,17 +21,17 @@ const getModifyVariablesContent = variableConfig => {
  * @param configs
  */
 const generateThemes = (themesConfig = {}, configs = {}) => {
-  const { outputDir, cssContent, preHeader, cwd = __dirname } = { ...defaultConfigs, ...configs };
+  const { cacheDir,  lessContent, preHeader, cwd = __dirname } = { ...defaultConfigs, ...configs };
   const resolve = _.partial(path.resolve, cwd);
 
   _.forEach(_.entries(themesConfig), ([theme, config]) => {
     const fileName = `${theme}.less`;
     const modifyVariablesContent = getModifyVariablesContent(config);
-    const content = `${cssContent}
+    const content = `${lessContent}
 
 ${preHeader}
 ${modifyVariablesContent}`;
-    const outPutFilePath = resolve(outputDir, fileName);
+    const outPutFilePath = resolve(cacheDir, fileName);
     let flag = true;
     try {
       write(outPutFilePath, content);
@@ -45,7 +45,7 @@ ${modifyVariablesContent}`;
   const jsContent = _.map(_.keys(themesConfig), theme => `import './${theme}.less';`).join('\r');
 
   write(
-    resolve(outputDir, 'themes.js'),
+    resolve(cacheDir, 'themes.js'),
     `${preHeader}\n${jsContent}`
   );
 };

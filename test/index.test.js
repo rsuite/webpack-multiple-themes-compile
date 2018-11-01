@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const multipleThemesCompile = require('../src/index');
 const themesConfig = require('./themes.config');
 
@@ -8,7 +9,7 @@ const pathResolve = relativePath => path.join(__dirname, relativePath);
 const readFile = path => fs.readFileSync(path, { encoding: 'utf-8' });
 const outputPath = pathResolve('/build');
 
-const webpackConfigs = {
+const webpackConfig = {
   output: {
     path: outputPath,
     filename: '[name].js',
@@ -16,7 +17,7 @@ const webpackConfigs = {
   }
 };
 
-const generateCompiler = configs => webpack(multipleThemesCompile(webpackConfigs, configs));
+const generateCompiler = configs => webpack(merge(webpackConfig, multipleThemesCompile(configs)));
 
 const runCompiler = compiler => {
   return new Promise((resolve, reject) => {
@@ -34,7 +35,7 @@ const runCompiler = compiler => {
 test('Default test', done => {
   const compiler = generateCompiler({
     themesConfig,
-    cssContent: 'body{color:@color}'
+    lessContent: 'body{color:@color}'
   });
 
   runCompiler(compiler).then(() => {
@@ -52,7 +53,7 @@ test('Default test', done => {
 test('Output Name test', done => {
   const compiler = generateCompiler({
     themesConfig,
-    cssContent: 'body{color:@color}',
+    lessContent: 'body{color:@color}',
     outputName: themeName => `css/${themeName}.css`
   });
   runCompiler(compiler).then(() => {

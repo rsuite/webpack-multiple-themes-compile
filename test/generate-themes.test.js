@@ -37,7 +37,7 @@ import './red.less';`
 });
 
 describe('Multiple themes generate.', () => {
-  const outputDir = './src/less/multiple-themes';
+  const cacheDir = './src/less/multiple-themes';
   generateThemes(
     {
       green: {
@@ -48,11 +48,11 @@ describe('Multiple themes generate.', () => {
       }
     },
     {
-      outputDir
+      cacheDir
     }
   );
 
-  const fileList = fs.readdirSync(path.resolve(process.cwd(), './src', outputDir));
+  const fileList = fs.readdirSync(path.resolve(process.cwd(), './src', cacheDir));
 
   test('Files validate.', () => {
     expect(fileList).toContain('green.less');
@@ -61,8 +61,8 @@ describe('Multiple themes generate.', () => {
   });
 });
 
-describe('Change outputDir.', () => {
-  const outputDir = './src/less/new-themes';
+describe('Change cacheDir.', () => {
+  const cacheDir = './src/less/new-themes';
   generateThemes(
     {
       red: {
@@ -70,11 +70,11 @@ describe('Change outputDir.', () => {
       }
     },
     {
-      outputDir
+      cacheDir
     }
   );
 
-  const outPutFilePath = path.resolve(process.cwd(), './src', outputDir);
+  const outPutFilePath = path.resolve(process.cwd(), './src', cacheDir);
   const resolvePath = pathLike => path.resolve(outPutFilePath, pathLike);
   const fileList = fs.readdirSync(outPutFilePath);
 
@@ -100,7 +100,7 @@ import './red.less';`
 });
 
 describe('Change cwd.', () => {
-  const outputDir = './themes';
+  const cacheDir = './themes';
   const cwd = __dirname;
   generateThemes(
     {
@@ -109,12 +109,12 @@ describe('Change cwd.', () => {
       }
     },
     {
-      outputDir,
+      cacheDir,
       cwd
     }
   );
 
-  const outPutFilePath = path.resolve(cwd, outputDir);
+  const outPutFilePath = path.resolve(cwd, cacheDir);
   const resolvePath = pathLike => path.resolve(outPutFilePath, pathLike);
   const fileList = fs.readdirSync(outPutFilePath);
 
@@ -139,11 +139,11 @@ import './red.less';`
   });
 });
 
-describe('Change cssContent and preHeader.', () => {
-  const cssContent = `// test cssContent
+describe('Change lessContent and preHeader.', () => {
+  const lessContent = `// test lessContent
 @import "../index";`;
   const preHeader = '// Generate by Script test.';
-  const outputDir = './src/less/change-csscontent';
+  const cacheDir = './src/less/change-lesscontent';
   generateThemes(
     {
       red: {
@@ -151,12 +151,12 @@ describe('Change cssContent and preHeader.', () => {
       }
     },
     {
-      cssContent,
+      lessContent,
       preHeader,
-      outputDir
+      cacheDir
     }
   );
-  const outPutFilePath = path.resolve(process.cwd(), './src', outputDir);
+  const outPutFilePath = path.resolve(process.cwd(), './src', cacheDir);
   const fileList = fs.readdirSync(outPutFilePath);
   const resolvePath = pathLike => path.resolve(outPutFilePath, pathLike);
 
@@ -174,7 +174,7 @@ import './red.less';`
 
   test('red.less content validate.', () => {
     expect(readFile(resolvePath('red.less'))).toEqual(
-      `// test cssContent
+      `// test lessContent
 @import "../index";
 
 // Generate by Script test.

@@ -12,7 +12,7 @@ This library use to overwrite webpack config to output multiple themes in once c
 ## Install
 
 ```bash
-npm i @rsuite/webpack-multiple-themes-compile webpack-merge
+npm i webpack-multiple-themes-compile webpack-merge
 # Optional.If you didn't install extract-text-webpack-plugin.
 npm i extract-text-webpack-plugin
 ```
@@ -36,7 +36,7 @@ Change the `webpack.config.js` file.
 
 ```diff
 + const merge = require('webpack-merge');
-+ const multipleThemesCompile = require('@rsuite/webpack-multiple-themes-compile');
++ const multipleThemesCompile = require('webpack-multiple-themes-compile');
 - module.exports = {
 + const webpackConfigs = {
   output: {

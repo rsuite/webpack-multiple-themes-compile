@@ -12,7 +12,7 @@
 ## 安装
 
 ```bash
-npm i @rsuite/webpack-multiple-themes-compile webpack-merge
+npm i webpack-multiple-themes-compile webpack-merge
 # 如果你没有安装 extract-text-webpack-plugin （这里为了兼容古老的 webpack 版本，所以没有直接安装)
 npm i extract-text-webpack-plugin
 ```
@@ -36,7 +36,7 @@ module.exports = {
 
 ```diff
 + const merge = require('webpack-merge');
-+ const multipleThemesCompile = require('@rsuite/webpack-multiple-themes-compile');
++ const multipleThemesCompile = require('webpack-multiple-themes-compile');
 - module.exports = {
 + const webpackConfigs = {
   output: {

@@ -1,5 +1,5 @@
 {
-  "name": "@rsuite/webpack-multiple-themes-compile",
+  "name": "webpack-multiple-themes-compile",
   "version": "1.0.0",
   "description": "Overwrite webpack config to output multiple themes css.",
   "main": "lib/index.js",

@@ -73,8 +73,6 @@ module.exports = {
 
 ```
 /**
- *
- * @param webpackConfig - webpack 原始配置
  * @param configs - 插件配置
  */
 multipleThemesCompile(configs);

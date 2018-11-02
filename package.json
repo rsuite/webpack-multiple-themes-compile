@@ -47,5 +47,12 @@
     "regenerator-runtime": "^0.12.1",
     "webpack": "^4.16.5",
     "webpack-merge": "^4.1.4"
-  }
+  },
+  "keywords": [
+    "webpack",
+    "less-loader",
+    "multiple-css",
+    "multiple-less",
+    "multiple-themes"
+  ]
 }

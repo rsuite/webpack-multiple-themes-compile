@@ -4,7 +4,7 @@
   "description": "Overwrite webpack config to output multiple themes css.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "rm -rf src/src && rm -rf test/themes && jest --silent --coverage --coverageReporters=text-lcov && npm run coveralls",
+    "test": "rm -rf src/src && rm -rf test/themes && jest --silent --coverage --coverageReporters=text-lcov",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "build": "rm -rf lib && rm -rf src/src && babel src --out-dir lib",
     "ready": "npm run test && npm run build",

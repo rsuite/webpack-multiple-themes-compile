@@ -11,7 +11,7 @@ This library use to overwrite webpack config to output multiple themes in once c
 ## Install
 
 ```bash
-npm i @hypers/webpack-multiple-themes-compile webpack-merge
+npm i webpack-multiple-themes-compile webpack-merge
 # Optional.If you didn't install extract-text-webpack-plugin.
 npm i extract-text-webpack-plugin
 ```
@@ -106,4 +106,4 @@ If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-p
  })
 ```
 
-[readm-cn]: https://github.com/rsuite/rsuite/edit/master/README_zh.md
+[readm-cn]: https://github.com/rsuite/webpack-multiple-themes-compile/blob/master/README_zh.md

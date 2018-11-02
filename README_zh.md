@@ -12,7 +12,7 @@
 ## 安装
 
 ```bash
-npm i @hypers/webpack-multiple-themes-compile webpack-merge
+npm i webpack-multiple-themes-compile webpack-merge
 # 如果你没有安装 extract-text-webpack-plugin （这里为了兼容古老的 webpack 版本，所以没有直接安装)
 npm i extract-text-webpack-plugin
 ```
@@ -109,4 +109,4 @@ multipleThemesCompile(configs);
  })
 ```
 
-[readme]:https://github.com/rsuite/rsuite/edit/master/README.md
+[readme]:https://github.com/rsuite/webpack-multiple-themes-compile/blob/master/README.md

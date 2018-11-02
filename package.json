@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.hypers.com:fe/webpack-multiple-themes-compile.git"
+    "url": "git@github.com:rsuite/webpack-multiple-themes-compile.git"
   },
   "author": "Godefery.Yang <hiyangguo@gmail.com>",
   "license": "MIT",

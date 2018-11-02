@@ -1,18 +1,20 @@
-# webpack 多主题编译
+# webpack multiple themes compile
 
-这个库用于复写 webpack 配置以达到输出多套 css 的目的。
+English | [中文版][readm-cn]
 
-## 安装
+This library use to overwrite webpack config to output multiple themes in once compile.
+
+## Install
 
 ```bash
 npm i @hypers/webpack-multiple-themes-compile webpack-merge
-# 如果你没有安装 extract-text-webpack-plugin （这里为了兼容古老的 webpack 版本，所以没有直接安装)
+# Optional.If you didn't install extract-text-webpack-plugin.
 npm i extract-text-webpack-plugin
 ```
 
-## 例子
+## Example
 
-原始`webpack.config.js`
+Origin `webpack.config.js`
 
 ```javascript
 module.exports = {
@@ -21,11 +23,11 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].js'
   }
-  // 这里是其他的options
+  // There is another options.
 };
 ```
 
-修改 `webpack.config.js`
+Change the `webpack.config.js` file.
 
 ```diff
 + const merge = require('webpack-merge');
@@ -37,7 +39,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[name].js'
   }
-  // 这里是其他的options
+  // There is another options.
 };
 
 + module.exports = merge(
@@ -56,7 +58,7 @@ module.exports = {
 + );
 ```
 
-输出
+Output directory tree.
 
 ```
 .
@@ -67,39 +69,37 @@ module.exports = {
 
 ## API
 
-调用说明
-
 ```
 /**
- *
- * @param webpackConfig - webpack 原始配置
- * @param configs - 插件配置
+ * @param configs
  */
 multipleThemesCompile(configs);
 ```
 
-## configs 详细
+## configs
 
-| 属性名称       | 类型`（默认值）`                                                                   | 描述                                                                                                           |
-| -------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| styleLoaders   | Array `[{ loader: 'css-loader' }, { loader: 'less-loader' }]`                      | 处理 less 文件的 loader。详见 [webpack 官访文档](https://webpack.js.org/configuration/module/#rule-loader)     |
-| themesConfig\* | Object                                                                             | 主题配置 , `key` 为生成的 css 的文件名，`value` 为一个对象。该对象的 key、value 分别为需要覆盖的变量名、变量值 |
-| lessContent    | String `@import "../index";`                                                       | 缓存的 less 文件的内容                                                                                         |
-| preHeader      | String `// Generate by Script.`                                                    | 生成文件的文件头内容                                                                                           |
-| cacheDir       | String `./src/less/themes`                                                         | 缓存文件的目录                                                                                                       |
-| cwd            | String `__dirname`                                                                 | 相对输出路径                                                                                                   |
-| outputName     | (themeName:String,fileName:String) => String `` themeName => `${themeName}.css` `` | 最终输出的文件名                                                                                               |
+| Property       | Type`（Default）`                                                                  | Description                                                                                                                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| styleLoaders   | Array `[{ loader: 'css-loader' }, { loader: 'less-loader' }]`                      | The loaders to compile less.Details in [webpack homepage](https://webpack.js.org/configuration/module/#rule-loader)                                                                                  |
+| themesConfig\* | Object                                                                             | Theme configuration. `key` for the file name of the generated css, `value` for the object .The object's key, the value is the name of the variable to be overwritten, and the value of the variable. |
+| lessContent    | String `@import "../index";`                                                       | The content of cache less.                                                                                                                                                                           |
+| preHeader      | String `// Generate by Script.`                                                    | The header of generate files.                                                                                                                                                                        |
+| cacheDir       | String `./src/less/themes`                                                         | Cache Directory.                                                                                                                                                                                     |
+| cwd            | String `__dirname`                                                                 | Relative output directory.                                                                                                                                                                           |
+| outputName     | (themeName:String,fileName:String) => String `` themeName => `${themeName}.css` `` | Finally output pathname.                                                                                                                                                                             |
 
-## 注意
+## Notice
 
-如果使用了 [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-plugin) 则可能需要增加以下配置
+If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-plugin),maybe you need added this config:
 
 ```diff
  new HtmlwebpackPlugin({
    filename: 'index.html',
    template: 'src/index.html',
    inject: 'body',
-   // 排除 themes.js
+   // exclude themes.js
 +  excludeChunks: ['themes']
  })
 ```
+
+[readm-cn]:https://github.com/rsuite/rsuite/edit/master/README_zh.md

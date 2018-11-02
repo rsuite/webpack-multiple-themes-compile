@@ -1,6 +1,9 @@
 # webpack 多主题编译
 
 [![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
+![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![webpack](https://img.shields.io/badge/webpack-%3E%3D3%20%7C%20%3E%3D4-green.svg)
+
 
 [English][readme] | 中文版
 

@@ -1,6 +1,8 @@
 # webpack multiple themes compile
 
 [![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
+![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![webpack](https://img.shields.io/badge/webpack-%3E%3D3%20%7C%20%3E%3D4-green.svg)
 
 English | [中文版][readm-cn]
 
@@ -104,4 +106,4 @@ If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-p
  })
 ```
 
-[readm-cn]:https://github.com/rsuite/rsuite/edit/master/README_zh.md
+[readm-cn]: https://github.com/rsuite/rsuite/edit/master/README_zh.md

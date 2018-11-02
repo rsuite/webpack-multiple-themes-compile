@@ -1,8 +1,27 @@
 language: node_js
 node_js:
   - node
+
 cache:
   directories:
     - node_modules
+
 after_script:
   - npm run coveralls
+
+jobs:
+  include:
+    - stage: 'NPM publish'
+      script: skip
+      deploy:
+        provider: npm
+        email: 'hiyangguo@qq.com'
+        api_key: $NPM_AUTH_TOKEN
+        skip_cleanup: true
+        on:
+          tags: true
+
+stages:
+  - test
+  - name: 'NPM publish'
+    if: tag IS present # only include deploy stage when it's a tagged commit

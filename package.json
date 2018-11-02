@@ -4,7 +4,8 @@
   "description": "Overwrite webpack config to output multiple themes css.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "rm -rf src/src && rm -rf test/themes && jest --silent",
+    "test": "rm -rf src/src && rm -rf test/themes && jest --silent --coverage --coverageReporters=text-lcov && npm run coveralls",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "build": "rm -rf lib && rm -rf src/src && babel src --out-dir lib",
     "ready": "npm run test && npm run build",
     "prepublishOnly": "npm run ready",
@@ -39,6 +40,7 @@
     "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
+    "coveralls": "^3.0.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.4.2",

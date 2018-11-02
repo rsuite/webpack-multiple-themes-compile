@@ -1,5 +1,7 @@
 # webpack 多主题编译
 
+[![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
+
 [English][readme] | 中文版
 
 这个库用于复写 webpack 配置以达到输出多套 css 的目的。

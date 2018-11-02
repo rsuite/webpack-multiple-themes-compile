@@ -1,5 +1,7 @@
 # webpack multiple themes compile
 
+[![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
+
 English | [中文版][readm-cn]
 
 This library use to overwrite webpack config to output multiple themes in once compile.

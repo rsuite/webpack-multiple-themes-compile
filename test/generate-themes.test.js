@@ -182,3 +182,34 @@ import './red.less';`
     );
   });
 });
+
+describe('Change lessContent use function.', () => {
+  const cacheDir = './src/less/change-lesscontent-use-function';
+  generateThemes(
+    {
+      blue: {
+        'base-color': '#0000ff'
+      }
+    },
+    {
+      cacheDir,
+      lessContent: (themeName, config) => {
+        return `// test lessContent themeName:${themeName}
+@import "../index";`;
+      }
+    }
+  );
+
+  const outPutFilePath = path.resolve(process.cwd(), './src', cacheDir);
+  const resolvePath = pathLike => path.resolve(outPutFilePath, pathLike);
+
+  test('blue.less content validate.', () => {
+    expect(readFile(resolvePath('blue.less'))).toEqual(
+      `// test lessContent themeName:blue
+@import "../index";
+
+// Generate by Script.
+@base-color:#0000ff;`
+    );
+  });
+});

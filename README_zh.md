@@ -89,9 +89,9 @@ multipleThemesCompile(configs);
 | -------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | styleLoaders   | Array `[{ loader: 'css-loader' }, { loader: 'less-loader' }]`                      | 处理 less 文件的 loader。详见 [webpack 官访文档](https://webpack.js.org/configuration/module/#rule-loader)     |
 | themesConfig\* | Object                                                                             | 主题配置 , `key` 为生成的 css 的文件名，`value` 为一个对象。该对象的 key、value 分别为需要覆盖的变量名、变量值 |
-| lessContent    | String `@import "../index";`                                                       | 缓存的 less 文件的内容                                                                                         |
+| lessContent    | String \| `(themeName:string,config:Object)=> String` `@import "../index";`        | 缓存的 less 文件的内容                                                                                         |
 | preHeader      | String `// Generate by Script.`                                                    | 生成文件的文件头内容                                                                                           |
-| cacheDir       | String `./src/less/themes`                                                         | 缓存文件的目录                                                                                                       |
+| cacheDir       | String `./src/less/themes`                                                         | 缓存文件的目录                                                                                                 |
 | cwd            | String `__dirname`                                                                 | 相对输出路径                                                                                                   |
 | outputName     | (themeName:String,fileName:String) => String `` themeName => `${themeName}.css` `` | 最终输出的文件名                                                                                               |
 
@@ -109,4 +109,4 @@ multipleThemesCompile(configs);
  })
 ```
 
-[readme]:https://github.com/rsuite/webpack-multiple-themes-compile/blob/master/README.md
+[readme]: https://github.com/rsuite/webpack-multiple-themes-compile/blob/master/README.md

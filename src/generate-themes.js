@@ -25,26 +25,33 @@ const generateThemes = (themesConfig = {}, configs = {}) => {
   const resolve = _.partial(path.resolve, cwd);
 
   _.forEach(_.entries(themesConfig), ([theme, config]) => {
-    const fileName = `${theme}.less`;
+    const lessFileName = `${theme}.less`;
+    const jsFileName = `${theme}.js`;
     const modifyVariablesContent = getModifyVariablesContent(config);
     const content = `${typeof lessContent === 'function' ? lessContent(theme, config) : lessContent}
 
 ${preHeader}
 ${modifyVariablesContent}`;
-    const outPutFilePath = resolve(cacheDir, fileName);
+    const outPutLessFilePath = resolve(cacheDir, lessFileName);
+    const outPutJsFilePath = resolve(cacheDir, jsFileName);
     let flag = true;
     try {
-      write(outPutFilePath, content);
+      write(outPutLessFilePath, content);
+      write(
+        outPutJsFilePath,
+        `${preHeader}
+import './${lessFileName}';`
+      );
     } catch (e) {
       console.log(e.message);
       flag = false;
     }
-    console.log(`Generate ${outPutFilePath} ${flag ? 'Succeed' : 'Failed'}.`);
+    console.log(
+      `webpack-multiple-themes-compile: Generate ${outPutLessFilePath} ${
+        flag ? 'Succeed' : 'Failed'
+      }.`
+    );
   });
-
-  const jsContent = _.map(_.keys(themesConfig), theme => `import './${theme}.less';`).join('\r');
-
-  write(resolve(cacheDir, 'themes.js'), `${preHeader}\n${jsContent}`);
 };
 
 module.exports = generateThemes;

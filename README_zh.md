@@ -3,11 +3,13 @@
 [![Build Status](https://travis-ci.org/rsuite/webpack-multiple-themes-compile.svg?branch=master)](https://travis-ci.org/rsuite/webpack-multiple-themes-compile)
 [![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![webpack](https://img.shields.io/badge/webpack-%3E%3D3%20%7C%20%3E%3D4-green.svg)
+![webpack](https://img.shields.io/badge/webpack-%3E%3D4-green.svg)
 
 [English][readme] | 中文版
 
 这个库用于复写 webpack 配置以达到输出多套 css 的目的。
+
+> 如果你使用的是 webpack@3 及以下版本，请使用[webpack-multiple-themes-compile@1](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v1)
 
 ## 安装
 

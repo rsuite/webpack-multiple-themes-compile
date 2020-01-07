@@ -1,6 +1,6 @@
 module.exports = {
   cacheDir: './src/less/themes',
-  outputName: themeName => `${themeName}.css`,
+  outputName: 'theme-[name].css',
   lessContent: `@import "../index";`,
   preHeader: '// Generate by Script.'
 };

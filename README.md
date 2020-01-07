@@ -13,8 +13,6 @@ This library use to overwrite webpack config to output multiple themes in once c
 
 ```bash
 npm i webpack-multiple-themes-compile webpack-merge
-# Optional.If you didn't install extract-text-webpack-plugin.
-npm i extract-text-webpack-plugin
 ```
 
 ## Example
@@ -83,15 +81,15 @@ multipleThemesCompile(configs);
 
 ## configs
 
-| Property       | Type`（Default）`                                                                  | Description                                                                                                                                                                                          |
-| -------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| styleLoaders   | Array `[{ loader: 'css-loader' }, { loader: 'less-loader' }]`                      | The loaders to compile less.Details in [webpack homepage](https://webpack.js.org/configuration/module/#rule-loader)                                                                                  |
-| themesConfig\* | Object                                                                             | Theme configuration. `key` for the file name of the generated css, `value` for the object .The object's key, the value is the name of the variable to be overwritten, and the value of the variable. |
-| lessContent    | String \| `(themeName:string,config:Object)=> String` `@import "../index";`        | The content of cache less.                                                                                                                                                                           |
-| preHeader      | String `// Generate by Script.`                                                    | The header of generate files.                                                                                                                                                                        |
-| cacheDir       | String `./src/less/themes`                                                         | Cache Directory.                                                                                                                                                                                     |
-| cwd            | String `__dirname`                                                                 | Relative output directory.                                                                                                                                                                           |
-| outputName     | (themeName:String,fileName:String) => String `` themeName => `${themeName}.css` `` | Finally output pathname.                                                                                                                                                                             |
+| Property       | Type`（Default）`                                                           | Description                                                                                                                                                                                          |
+| -------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| styleLoaders   | Array `[{ loader: 'css-loader' }, { loader: 'less-loader' }]`               | The loaders to compile less.Details in [webpack homepage](https://webpack.js.org/configuration/module/#rule-loader)                                                                                  |
+| themesConfig\* | Object                                                                      | Theme configuration. `key` for the file name of the generated css, `value` for the object .The object's key, the value is the name of the variable to be overwritten, and the value of the variable. |
+| lessContent    | String \| `(themeName:string,config:Object)=> String` `@import "../index";` | The content of cache less.                                                                                                                                                                           |
+| preHeader      | String `// Generate by Script.`                                             | The header of generate files.                                                                                                                                                                        |
+| cacheDir       | String `./src/less/themes`                                                  | Cache Directory.                                                                                                                                                                                     |
+| cwd            | String `__dirname`                                                          | Relative output directory.                                                                                                                                                                           |
+| outputName     | String `theme-[name].css`                                                   | Finally output pathname.Options similar to the same options in webpackOptions.output.                                                                                                                |
 
 ## Notice
 
@@ -103,7 +101,7 @@ If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-p
    template: 'src/index.html',
    inject: 'body',
    // exclude themes.js
-+  excludeChunks: ['themes']
++  excludeChunks: Object.keys(themesConfig)
  })
 ```
 

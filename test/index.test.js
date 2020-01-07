@@ -45,6 +45,7 @@ test('Default test', done => {
     expect(readFile(path.resolve(outputPath, './theme-green.css'))).toEqual(`body {
   color: #008000;
 }
+
 `);
     done();
   });
@@ -54,13 +55,14 @@ test('Output Name test', done => {
   const compiler = generateCompiler({
     themesConfig,
     lessContent: 'body{color:@color}',
-    outputName: themeName => `css/${themeName}.css`
+    outputName: 'css/theme-[name].css'
   });
   runCompiler(compiler).then(() => {
     const dist = fs.readdirSync(`${outputPath}/css`);
-    expect(dist.length).toEqual(2);
+    expect(dist.length).toEqual(3);
     expect(dist).toContain('theme-green.css');
     expect(dist).toContain('theme-yellow.css');
+    expect(dist).toContain('theme-red.css');
     done();
   });
 });

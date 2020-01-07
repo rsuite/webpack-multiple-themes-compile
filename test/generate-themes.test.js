@@ -16,11 +16,11 @@ describe('Default generate.', () => {
 
   test('Files length validate.', () => {
     expect(fileList).toContain('red.less');
-    expect(fileList).toContain('themes.js');
+    expect(fileList).toContain('red.js');
   });
 
-  test('themes.js content validate.', () => {
-    expect(readFile(resolvePath('themes.js'))).toEqual(
+  test('red.js content validate.', () => {
+    expect(readFile(resolvePath('red.js'))).toEqual(
       `// Generate by Script.
 import './red.less';`
     );
@@ -56,8 +56,9 @@ describe('Multiple themes generate.', () => {
 
   test('Files validate.', () => {
     expect(fileList).toContain('green.less');
+    expect(fileList).toContain('green.js');
     expect(fileList).toContain('yellow.less');
-    expect(fileList).toContain('themes.js');
+    expect(fileList).toContain('yellow.js');
   });
 });
 
@@ -82,8 +83,8 @@ describe('Change cacheDir.', () => {
     expect(fileList.length).toEqual(2);
   });
 
-  test('themes.js content validate.', () => {
-    expect(readFile(resolvePath('themes.js'))).toEqual(
+  test('red.js content validate.', () => {
+    expect(readFile(resolvePath('red.js'))).toEqual(
       `// Generate by Script.
 import './red.less';`
     );
@@ -122,8 +123,8 @@ describe('Change cwd.', () => {
     expect(fileList.length).toEqual(2);
   });
 
-  test('themes.js content validate.', () => {
-    expect(readFile(resolvePath('themes.js'))).toEqual(
+  test('red.js content validate.', () => {
+    expect(readFile(resolvePath('red.js'))).toEqual(
       `// Generate by Script.
 import './red.less';`
     );
@@ -162,11 +163,11 @@ describe('Change lessContent and preHeader.', () => {
 
   test('Files length validate.', () => {
     expect(fileList).toContain('red.less');
-    expect(fileList).toContain('themes.js');
+    expect(fileList).toContain('red.js');
   });
 
-  test('themes.js content validate.', () => {
-    expect(readFile(resolvePath('themes.js'))).toEqual(
+  test('red.js content validate.', () => {
+    expect(readFile(resolvePath('red.js'))).toEqual(
       `// Generate by Script test.
 import './red.less';`
     );

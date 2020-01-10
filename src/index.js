@@ -78,8 +78,7 @@ module.exports = function(configs) {
       }),
       // 移除没用的文件
       new CleanWebpackPlugin({
-        cleanAfterEveryBuildPatterns: [path.resolve(THEME_PATH, '*.js')],
-        dangerouslyAllowCleanPatternsOutsideProject: true
+        cleanAfterEveryBuildPatterns: [path.resolve(THEME_PATH, '*.js')]
       })
     ],
     optimization: {

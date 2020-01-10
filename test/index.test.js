@@ -42,6 +42,7 @@ test('Default test', done => {
     const dist = fs.readdirSync(outputPath);
     expect(dist).toContain('theme-green.css');
     expect(dist).toContain('theme-yellow.css');
+    expect(dist).toContain('theme-red.css');
     expect(readFile(path.resolve(outputPath, './theme-green.css'))).toEqual(`body {
   color: #008000;
 }

@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
@@ -75,10 +74,6 @@ module.exports = function(configs) {
       new MiniCssExtractPlugin({
         filename: outputName,
         chunkFilename: `css/[id].css`
-      }),
-      // 移除没用的文件
-      new CleanWebpackPlugin({
-        cleanAfterEveryBuildPatterns: [path.resolve(THEME_PATH, '*.js')]
       })
     ],
     optimization: {

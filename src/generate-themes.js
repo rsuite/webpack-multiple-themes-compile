@@ -10,8 +10,13 @@ const write = function(pathLike, content) {
   fs.writeFileSync(pathLike, content, 'utf-8');
 };
 
+const getImportLines = config => {
+  const imports = config.import || [];
+  return _.map(imports, path => `@import '${path}';`);
+};
+
 const getModifyVariablesContent = variableConfig => {
-  const declaredContent = _.map(_.entries(variableConfig), ([key, value]) => `@${key}:${value};`);
+  const declaredContent = _.map(_.entries(variableConfig).filter(([key]) => key !== 'import'), ([key, value]) => `@${key}:${value};`);
   return declaredContent.join('\r');
 };
 
@@ -27,8 +32,9 @@ const generateThemes = (themesConfig = {}, configs = {}) => {
   _.forEach(_.entries(themesConfig), ([theme, config]) => {
     const lessFileName = `${theme}.less`;
     const jsFileName = `${theme}.js`;
+    const importLines = getImportLines(config);
     const modifyVariablesContent = getModifyVariablesContent(config);
-    const content = `${typeof lessContent === 'function' ? lessContent(theme, config) : lessContent}
+    const content = `${typeof lessContent === 'function' ? lessContent(theme, config) : [...importLines, lessContent].join('\r')}
 
 ${preHeader}
 ${modifyVariablesContent}`;

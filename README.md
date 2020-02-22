@@ -55,6 +55,9 @@ Change the `webpack.config.js` file.
 +         color: '#008000'
 +       },
 +       yellow: {
++         import: [
++           '~thirdpartylibrary/styles/yellow.less'
++         ],
 +         color: '#ffff00'
 +       }
 +     },

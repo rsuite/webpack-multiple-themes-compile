@@ -34,7 +34,7 @@ const generateThemes = (themesConfig = {}, configs = {}) => {
     const jsFileName = `${theme}.js`;
     const importLines = getImportLines(config);
     const modifyVariablesContent = getModifyVariablesContent(config);
-    const content = `${typeof lessContent === 'function' ? lessContent(theme, config) : [...importLines, lessContent].join('\r')}
+    const content = `${typeof lessContent === 'function' ? lessContent(theme, config) : [...importLines, lessContent].join('\n')}
 
 ${preHeader}
 ${modifyVariablesContent}`;

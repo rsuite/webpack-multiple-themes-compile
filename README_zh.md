@@ -55,6 +55,9 @@ module.exports = {
 +         color: '#008000'
 +       },
 +       yellow: {
++         import: [
++           '~thirdpartylibrary/styles/yellow.less'
++         ],
 +         color: '#ffff00'
 +       }
 +     },

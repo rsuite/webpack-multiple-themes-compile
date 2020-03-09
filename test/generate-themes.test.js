@@ -8,6 +8,12 @@ describe('Default generate.', () => {
   generateThemes({
     red: {
       'base-color': '#ff0000'
+    },
+    dark: {
+      import: [
+        '~rsuite/lib/styles/themes/dark/index'
+      ],
+      color: '#e5e5e5'
     }
   });
   const outPutFilePath = path.resolve(process.cwd(), './src/src/less/themes');
@@ -34,6 +40,16 @@ import './red.less';`
 @base-color:#ff0000;`
     );
   });
+
+  test('dark.less import validate', () => {
+    expect(readFile(resolvePath('dark.less'))).toEqual(
+      `@import '~rsuite/lib/styles/themes/dark/index';
+@import "../index";
+
+// Generate by Script.
+@color:#e5e5e5;`
+    );
+  })
 });
 
 describe('Multiple themes generate.', () => {

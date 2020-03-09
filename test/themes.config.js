@@ -7,5 +7,8 @@ module.exports = {
   },
   red: {
     color: '#ff0000'
+  },
+  dark: {
+    color: '#e5e5e5'
   }
 };

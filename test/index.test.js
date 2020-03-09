@@ -60,7 +60,7 @@ test('Output Name test', done => {
   });
   runCompiler(compiler).then(() => {
     const dist = fs.readdirSync(`${outputPath}/css`);
-    expect(dist.length).toEqual(3);
+    expect(dist.length).toEqual(4);
     expect(dist).toContain('theme-green.css');
     expect(dist).toContain('theme-yellow.css');
     expect(dist).toContain('theme-red.css');

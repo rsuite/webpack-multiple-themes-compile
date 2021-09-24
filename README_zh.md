@@ -97,7 +97,7 @@ multipleThemesCompile(configs);
 | cacheDir       | String `./src/less/themes`                                                  | 缓存文件的目录                                                                                                 |
 | cwd            | String `__dirname`                                                          | 相对输出路径                                                                                                   |
 | outputName     | String `theme-[name].css`                                                   | 最终输出的文件名。这个配置和 `webpackOptions.output` 一致。                                                    |
-
+| publicPath     |String`../../`                                                                | mini-css-extract-plugin 的publicPath配置      |
 ## 注意
 
 如果使用了 [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-plugin) 则可能需要增加以下配置

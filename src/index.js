@@ -1,11 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const fs = require('fs');
-const _ = require('lodash');
 const generateThemes = require('./generate-themes');
 const defaultConfigs = require('./defaultConfigs');
 
-const devMode = process.env.NODE_ENV !== 'production';
 
 function recursiveIssuer(m) {
   if (m.issuer) {
@@ -31,15 +29,15 @@ function recursiveIssuer(m) {
  * @return {Object}
  */
 module.exports = function(configs) {
-  const { themesConfig, cacheDir, cwd = __dirname, styleLoaders, outputName } = _.extend(
-    defaultConfigs,
-    { styleLoaders: [{ loader: 'css-loader' }, { loader: 'less-loader' }] },
-    configs
-  );
-  generateThemes(themesConfig, _.pick(configs, ['cacheDir', 'lessContent', 'preHeader']));
+  const { themesConfig, cacheDir, cwd = __dirname, styleLoaders, outputName, publicPath } = 
+    {
+      ...defaultConfigs,
+      ...{ styleLoaders: [{ loader: 'css-loader' }, { loader: 'less-loader' }] },
+      ...configs
+    }
+  generateThemes(themesConfig, configs);
   // 主题路径
   const THEME_PATH = path.resolve(cwd, cacheDir);
-  const resolveToThemeStaticPath = fileName => path.resolve(THEME_PATH, fileName);
   const themeFileNameSet = fs
     .readdirSync(path.resolve(THEME_PATH))
     .filter(fileName => /\.less/.test(fileName));
@@ -61,7 +59,7 @@ module.exports = function(configs) {
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                hmr: devMode
+                publicPath
               }
             },
             ...(styleLoaders || [])
@@ -76,20 +74,5 @@ module.exports = function(configs) {
         chunkFilename: `css/[id].css`
       })
     ],
-    optimization: {
-      splitChunks: {
-        // css 按照模块打包
-        cacheGroups: themeNameSet.reduce((entry, themeName) => {
-          entry[`${themeName}Theme`] = {
-            name: themeName,
-            test: (m, c, entry = themeName) =>
-              m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
-            chunks: 'all',
-            enforce: true
-          };
-          return entry;
-        }, {})
-      }
-    }
   };
 };

@@ -95,7 +95,7 @@ multipleThemesCompile(configs);
 | cacheDir       | String `./src/less/themes`                                                  | Cache Directory.                                                                                                                                                                                     |
 | cwd            | String `__dirname`                                                          | Relative output directory.                                                                                                                                                                           |
 | outputName     | String `theme-[name].css`                                                   | Finally output pathname.Options similar to the same options in webpackOptions.output.                                                                                                                |
-
+| publicPath     |String`../../`                                                                | publicPath configuration for mini-css-extract-plugin|
 ## Notice
 
 If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-plugin),maybe you need added this config:

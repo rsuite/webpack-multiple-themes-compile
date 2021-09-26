@@ -9,7 +9,9 @@
 
 这个库用于复写 webpack 配置以达到输出多套 css 的目的。
 
-> 如果你使用的是 webpack@3 及以下版本，请使用[webpack-multiple-themes-compile@1](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v1)
+> 如果你使用的是 Webpack3 及以下版本，请使用[webpack-multiple-themes-compile@1.x](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v1)
+>
+> 如果你使用的是 Webpack4 的版本，请使用[webpack-multiple-themes-compile@2.x](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v2)
 
 ## 安装
 
@@ -26,8 +28,8 @@ module.exports = {
   output: {
     path: outPutPath,
     filename: '[name].js',
-    chunkFilename: '[name].js'
-  }
+    chunkFilename: '[name].js',
+  },
   // 这里是其他的options
 };
 ```

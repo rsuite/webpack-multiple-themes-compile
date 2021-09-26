@@ -11,6 +11,8 @@ This library use to overwrite webpack config to output multiple themes in once c
 
 > If you used webpack version lower than 3 , please use [webpack-multiple-themes-compile@1](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v1).
 
+> If you used Webpack 4, please use [webpack-multiple-themes-compile@2.x](https://github.com/rsuite/webpack-multiple-themes-compile/tree/v2).
+
 ## Install
 
 ```bash
@@ -26,8 +28,8 @@ module.exports = {
   output: {
     path: outPutPath,
     filename: '[name].js',
-    chunkFilename: '[name].js'
-  }
+    chunkFilename: '[name].js',
+  },
   // There is another options.
 };
 ```

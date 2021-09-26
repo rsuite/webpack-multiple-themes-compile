@@ -52,7 +52,7 @@
     "less-loader": "^10.0.1",
     "mini-css-extract-plugin": "^2.3.0",
     "regenerator-runtime": "^0.12.1",
-    "webpack": "^4.16.5",
+    "webpack": "^5.54.0",
     "webpack-merge": "^4.1.4"
   },
   "keywords": [

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/rsuite/webpack-multiple-themes-compile.svg?branch=master)](https://travis-ci.org/rsuite/webpack-multiple-themes-compile)
 [![Coverage Status](https://coveralls.io/repos/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo/badge.svg?branch=master)](https://coveralls.io/github/hiyangguo/webpack-mutiple-theme-bundle-css-demo?branch=master)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![webpack](https://img.shields.io/badge/webpack-%3E%3D4-green.svg)
+![webpack](https://img.shields.io/badge/webpack-%3E%3D5-green.svg)
 
 English | [中文版][readm-cn]
 
@@ -97,7 +97,8 @@ multipleThemesCompile(configs);
 | cacheDir       | String `./src/less/themes`                                                  | Cache Directory.                                                                                                                                                                                     |
 | cwd            | String `__dirname`                                                          | Relative output directory.                                                                                                                                                                           |
 | outputName     | String `theme-[name].css`                                                   | Finally output pathname.Options similar to the same options in webpackOptions.output.                                                                                                                |
-| publicPath     |String`../../`                                                                | publicPath configuration for mini-css-extract-plugin|
+| publicPath     | String`../../`                                                              | publicPath configuration for mini-css-extract-plugin                                                                                                                                                 |
+
 ## Notice
 
 If you used [`html-webpack-plugin`](https://www.npmjs.com/package/html-webpack-plugin),maybe you need added this config:

@@ -24,7 +24,7 @@
     "css-loader": "*"
   },
   "dependencies": {
-    "fs-extra": "^7.0.0"
+    "fs-extra": "^8.0.0"
   },
   "jest": {
     "testEnvironment": "node",
